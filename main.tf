@@ -1,8 +1,14 @@
 
 data "template_file" "userdata_default" {
-  template = file("cloud-init.tpl")
-  vars = {
-    HOSTNAME = var.guestHostname
+  part {
+    content = <<EOF
+      #!/bin/bash
+      
+      date >/root/cloudinit.log
+      hostnamectl set-hostname ${guestHostname}
+      echo "Done cloud-init" >>/root/cloudinit.log
+      
+      EOF
   }
 }
 
