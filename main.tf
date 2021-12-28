@@ -6,7 +6,7 @@ data "template_file" "userdata_default" {
   }
 }
 
-data "template_cloudinit_config" "config" {
+data "template_cloudinit_config" "userdata" {
   # Main cloud-config configuration file.
   part {
     filename     = "init.cfg"
@@ -33,7 +33,7 @@ resource "esxi_guest" "vmguest" {
 
   guestinfo = {
     "userdata.encoding" = "gzip+base64"
-    "userdata"          = base64gzip(data.template_cloudinit_config.userdata_default.rendered)
+    "userdata"          = base64gzip(data.template_cloudinit_config.userdata.rendered)
   }
 }
 
