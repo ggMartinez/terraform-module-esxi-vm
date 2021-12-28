@@ -7,12 +7,8 @@ data "template_file" "userdata_default" {
 }
 
 data "template_file" "userdata" {
-  template = file(var.userData)
+  template = fileexists(var.userData) ? file(var.userData) : file("${path.module}/cloud-init-null.tpl")
 }
-
-
-
-
 
 
 resource "esxi_guest" "vmguest" {
