@@ -6,3 +6,11 @@ terraform {
     }
   }
 }
+
+provider "esxi" {
+  esxi_hostname      = var.esxiHostname
+  esxi_hostport      = var.esxiSSHPort
+  esxi_hostssl       = var.esxiSSLPort
+  esxi_username      = var.esxiUsername
+  esxi_password      = var.esxiPassword
+}
