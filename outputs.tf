@@ -1,7 +1,7 @@
-output "Guest Name" {
+output "GuestName" {
   value = esxi_guest.vmguest.guest_name
 }
-output "IP Address" {
+output "IP-Address" {
   value = esxi_guest.vmguest.ip_address
 }
 
@@ -9,14 +9,14 @@ output "RAM" {
   value = esxi_guest.vmguest.memsize
 }
 
-output "CPU Count" {
+output "CPU-Count" {
   value = esxi_guest.vmguest.numvcpus
 }
 
-output "Guest OS" {
+output "GuestOS" {
   value = esxi_guest.vmguest.guestos
 }
 
-output "Template Name" {
+output "TemplateName" {
   value = esxi_guest.vmguest.clone_from_vm
 }
