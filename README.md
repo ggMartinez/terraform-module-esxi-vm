@@ -1,5 +1,8 @@
 # VMware ESXi - Terraform Module
 
+![ESXI Logo](https://www.nicepng.com/png/full/243-2432343_vmware-vsphere-logo.png)
+![Terraform Logo](https://i.pinimg.com/originals/f4/54/15/f45415270449af33c39dcb1e8af5a62a.png)
+
 Terraform module to create ESXi VMs. No need for vCenter. Works fine with ESXi Standalone Server.
 
 For the poor people that stole bikes and don't have money for expensive services. 
