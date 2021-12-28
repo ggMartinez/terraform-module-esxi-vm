@@ -6,6 +6,11 @@ data "template_file" "userdata_default" {
   }
 }
 
+data "template_file" "userdata" {
+  template = file(var.userdata)
+}
+
+
 
 
 
@@ -24,7 +29,7 @@ resource "esxi_guest" "vmguest" {
 
   guestinfo = {
     "userdata.encoding" = "gzip+base64"
-    "userdata"          = base64gzip(data.template_file.userdata_default.rendered)
+    "userdata"          = base64gzip(format("%s%s",data.template_file.userdata_default.rendered,data.template_file.userdata.rendered)
   }
 }
 

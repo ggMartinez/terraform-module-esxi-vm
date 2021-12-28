@@ -44,3 +44,7 @@ variable "memSize" {
 variable "powerOn" {
    default = "on"
 }
+
+variable "userData" {
+  
+}
