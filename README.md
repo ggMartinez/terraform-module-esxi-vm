@@ -84,7 +84,7 @@ If you don't specify it, it will only run the default one. Pretty easy.
 - User Data is only tested on Centos 7. May work with another distro, but whatever.
 - I only tested this on ESXi 7. I guess it will work on early versions, but only have one server in home to test stuff, and I will not be installing an early version just to test this.
 - I don't know if this will work on vCenter. But it is pointless, as there are a f*ck ton of modules out there in the wild focused on that, that are more complete and better than this one. I only made this so I don't have to manually install VMs when doing some tests with a server at home. 
-- Guess this can be used in small production environments if you have a few ESXi servers and no vCenter. **But I recomend using this ONLY FOR TESTING**. Don't have intentions for the moment to dedicate much time for this. My main focus is AWS, not ESXi. 
+- Guess this can be used in small production environments if you have a few ESXi servers and no vCenter. **But I recomend using this ONLY FOR TESTING**. Don't have intentions for the moment to dedicate much time on this. My main focus is AWS, not ESXi. Long live the Cloud. 
 
 
 ## References
