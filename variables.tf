@@ -46,5 +46,5 @@ variable "powerOn" {
 }
 
 variable "userData" {
-  default = ""
+  default = null
 }
