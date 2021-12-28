@@ -1,42 +1,34 @@
 #  Change these defaults to fit your needs!
 
 variable "esxiHostname" {
-  default = ""
 }
 
 variable "esxiSSHPort" {
-  default = ""
 }
 
 variable "esxiSSLPort" {
-  default = ""
 }
 
 variable "esxiUsername" {
-  default = ""
 }
 
 variable "esxiPassword" {
-  # Unspecified will prompt
 }
 
 variable "virtualNetwork" {
-  default = ""
 }
 
 variable "dataStore" {
-  default = ""
 }
 
 variable "templateVM" {
-  default = ""
 }
 
 variable "guestHostname" {
-  default = ""
 }
 
-variable "powerOn" {
-  type = string
-  default = "on"
+variable "cpuCount" {
+}
+
+variable "memSize" {
 }
