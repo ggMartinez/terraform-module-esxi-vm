@@ -1,6 +1,6 @@
 
 data "template_file" "userdata_default" {
-  template = file("cloud-init-base.tpl")
+  template = file("${path.module}/cloud-init-base.tpl")
   vars = {
     HOSTNAME = var.guestHostname
   }
