@@ -68,7 +68,7 @@ An example:
     }
 
 ## VM Template
-The provider can use an OVA image, but is not implemented yet.
+The provider can use an OVA image, but is not implemented here yet. Besides, I'm not a fan of importing random OVAs from internet. I rather write an user-data script and install stuff, or if I'm bored, just throw some Ansible/Docker into the ecuation.
 
 This module only works with an existing VM to clone. Recomended to have VMware Tools and Cloud-Init Datasource for VMware GuestInfo (https://github.com/vmware-archive/cloud-init-vmware-guestinfo) if you want to inject some code into the VM init.
 
