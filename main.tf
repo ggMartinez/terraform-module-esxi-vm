@@ -7,7 +7,7 @@ data "template_file" "userdata_default" {
 }
 
 data "template_file" "userdata" {
-  template = file(var.userdata)
+  template = file(var.userData)
 }
 
 
