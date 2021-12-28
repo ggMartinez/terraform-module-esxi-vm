@@ -1,7 +1,7 @@
 #!/bin/bash
 
-date >/root/cloudinit.log
+date > /var/log/cloud-init-custom.log
 hostnamectl set-hostname ${HOSTNAME}
-echo "Done cloud-init" >>/root/cloudinit.log
+echo "Done cloud-init" >>/var/log/cloud-init-custom.log
 
 
