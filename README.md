@@ -14,7 +14,7 @@ You can guess them...
  - Terraform installed on your host (at least version 0.13)
  - A host with VMware ESXi Standalone Server. VMs don't run in trees.
  - A VM created on ESXi to use as template.
- - If you want to do some (not that much yet) cloud-init nasty things, you need install VMware Tools, and Cloud-Init Datasource for VMware GuestInfo.
+ - If you want to do some (not that much yet) cloud-init nasty things, you need install VMware Tools, and Cloud-Init Datasource for VMware GuestInfo on the template VM.
   
 ## Quick usage
 
