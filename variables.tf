@@ -40,3 +40,7 @@ variable "cpuCount" {
 variable "memSize" {
    default = "1024"
 }
+
+variable "powerOn" {
+   default = "on"
+}
