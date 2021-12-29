@@ -3,6 +3,15 @@ data "template_file" "userdata_default" {
   template = file("${path.module}/cloud-init-base.tpl")
   vars = {
     HOSTNAME = var.guestHostname
+    STATIC_IP = var.vmStaticIp
+    IP_ADDR = var.vmIpAddress
+    NETWORK_INTERFACE = var.vmNetworkInterface
+    NETMASK = var.vmNetmask
+    GATEWAY = var.vmDefaultGW
+    DNS1 = var.vmDNS1
+    DNS2 = var.vmDNS2
+    USERNAME = var.vmUsername
+    SSH_KEY = var.vmSSHKey
   }
 }
 

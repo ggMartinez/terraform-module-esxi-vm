@@ -48,3 +48,39 @@ variable "powerOn" {
 variable "userData" {
   default = "sopenco"
 }
+
+variable "vmNetworkInterface" { 
+   default = "ens192"
+}
+
+variable "vmStaticIp" { 
+   default = false
+}
+
+variable "vmIpAddress" {
+   default = null
+}
+
+variable "vmNetmask" {
+   default = "255.255.255.0"
+}
+
+variable "vmDefaultGW" {
+   default = 192.168.1.1
+}
+
+variable "vmDNS1" {
+   default = "8.8.8.8"
+}
+
+variable "vmDNS2" {
+   default = "8.8.4.4"
+}
+
+variable "vmUsername" {
+   default = null
+}
+
+variable "vmSSHKey" {
+   default = null
+}
