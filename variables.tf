@@ -66,7 +66,7 @@ variable "vmNetmask" {
 }
 
 variable "vmDefaultGW" {
-   default = 192.168.1.1
+   default = "192.168.1.1"
 }
 
 variable "vmDNS1" {
