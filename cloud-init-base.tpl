@@ -14,7 +14,7 @@ then
 fi
 
 if ! [ -z ${USERNAME} ]
-    useradd -m ${USERNMAE}
+    useradd -m ${USERNAME}
     PASS=$(openssl rand -base64 32)
     echo $PASS |  passwd --stdin ${USERNAME}
     echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL"
