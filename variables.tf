@@ -54,7 +54,7 @@ variable "vmNetworkInterface" {
 }
 
 variable "vmStaticIp" { 
-   default = false
+   default = "false"
 }
 
 variable "vmIpAddress" {

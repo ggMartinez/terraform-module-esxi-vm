@@ -22,7 +22,7 @@ if ! [ -z ${USERNAME} ]
     if ! [ -z ${SSH_KEY} ]
     then 
         mkdir -p /home/${USERNAME}/.ssh
-        echo ${SSH_KEY} /home/${USERNAME}/.ssh/authorized_keys
+        echo ${SSH_KEY} > /home/${USERNAME}/.ssh/authorized_keys
         chown ${USERNAME} /home/${USERNAME}/.ssh/ -R 
     else
         echo $PASS > /home/${USERNAME}/generated_pass.txt
