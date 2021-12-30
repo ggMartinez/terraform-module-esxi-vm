@@ -19,7 +19,7 @@ createUser(){
     echo $PASS |  passwd --stdin ${USERNAME}
     echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
 
-    if ! [ -z ${SSH_KEY} ]
+    if ! [ -z "${SSH_KEY}" ]
     then
         mkdir -p /home/${USERNAME}/.ssh
         echo ${SSH_KEY} > /home/${USERNAME}/.ssh/authorized_keys
@@ -32,7 +32,7 @@ createUser(){
 
 
 
-if  [ ${STATIC_IP} = "true"]
+if  [ "${STATIC_IP}" = "true"]
 then
     setIpAddress 2>&1 > /var/log/net-init.log
 fi
