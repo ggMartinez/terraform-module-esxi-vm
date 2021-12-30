@@ -13,10 +13,12 @@ then
 
     DEVICE=$(nmcli d| grep connected| tr -s " " | cut -d" " -f1)
     INTERFACE="System $DEVICE"
+    nmcli con down "$INTERFACE"
     nmcli con mod "$INTERFACE" ipv4.method manual
     nmcli con mod "$INTERFACE" ipv4.address ${IP_ADDR}/$(ipcalc -p 1.1.1.1 -m ${NETMASK}| grep PREFIX| cut -d"=" -f2)
     nmcli con mod "$INTERFACE" ipv4.gateway ${GATEWAY}
     nmcli con mod "$INTERFACE" ipv4.dns "${DNS1},${DNS2}"
+    nmcli con up "$INTERFACE"
     nmcli device disconnect $DEVICE; wait ; nmcli device connect $DEVICE
     systemctl restart NetworkManager
 fi
