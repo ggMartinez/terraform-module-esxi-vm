@@ -6,7 +6,6 @@ hostnamectl set-hostname ${HOSTNAME}
 
 if  [ "${STATIC_IP}" = "true" ]
 then
-    echo "Configuring network interface ${NETWORK_INTERFACE}" >> /var/log/cloud-init-custom.log
     echo "IP ADDRESS: ${IP_ADDR}" >> /var/log/cloud-init-custom.log
     echo "NETMASK: ${NETMASK}" >> /var/log/cloud-init-custom.log
     echo "GATEWAY: ${GATEWAY}" >> /var/log/cloud-init-custom.log
