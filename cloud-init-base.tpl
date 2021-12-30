@@ -1,19 +1,28 @@
 #!/bin/bash
 
 
-setIpAddress() {
+date > /var/log/cloud-init-custom.log
+hostnamectl set-hostname ${HOSTNAME}
+
+if  [ "${STATIC_IP}" = "true" ]
+then
+    echo "Configuring network interface ${NETWORK_INTERFACE}" >> /var/log/cloud-init-custom.log
+    echo "IP ADDRESS: ${IP_ADDR}" >> /var/log/cloud-init-custom.log
+    echo "NETMASK: ${NETMASK}" >> /var/log/cloud-init-custom.log
+    echo "GATEWAY: ${GATEWAY}" >> /var/log/cloud-init-custom.log
+    echo "DNS1 & DNS2: ${DNS1} ${DNS2}" >> /var/log/cloud-init-custom.log
+
     nmcli con mod ${NETWORK_INTERFACE} ipv4.method manual
     nmcli con mod ${NETWORK_INTERFACE} ipv4.address ${IP_ADDR}/$(ipcalc -p 1.1.1.1 -m ${NETMASK}| grep PREFIX| cut -d"=" -f2)
     nmcli con mod ${NETWORK_INTERFACE} ipv4.gateway ${GATEWAY}
     nmcli con mod ${NETWORK_INTERFACE} ipv4.dns "${DNS1},${DNS2}"
 
     systemctl restart NetworkManager
-}
-date > /var/log/cloud-init-custom.log
-hostnamectl set-hostname ${HOSTNAME}
+fi
 
+if ! [ -z "${USERNAME}" ]
+    echo "Creating User ${USERNAME}" >> >> /var/log/cloud-init-custom.log
 
-createUser(){
     useradd -m ${USERNAME}
     PASS=$(openssl rand -base64 32)
     echo $PASS |  passwd --stdin ${USERNAME}
@@ -21,24 +30,14 @@ createUser(){
 
     if ! [ -z "${SSH_KEY}" ]
     then
+        echo "ADDING KEY ${SSH_KEY}"
+        
         mkdir -p /home/${USERNAME}/.ssh
         echo ${SSH_KEY} > /home/${USERNAME}/.ssh/authorized_keys
         chown ${USERNAME} /home/${USERNAME}/.ssh/ -R
     else
         echo $PASS > /home/${USERNAME}/generated_pass.txt
     fi
-}
-
-
-
-
-if  [ "${STATIC_IP}" = "true"]
-then
-    setIpAddress 2>&1 > /var/log/net-init.log
-fi
-
-if ! [ -z ${USERNAME} ]
-    createUser 2>&1 > /var/log/create-user.log
 fi
 
 echo "Done cloud-init" >>/var/log/cloud-init-custom.log
