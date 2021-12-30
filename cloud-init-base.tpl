@@ -17,10 +17,10 @@ then
     nmcli con mod "$INTERFACE" ipv4.gateway ${GATEWAY}
     nmcli con mod "$INTERFACE" ipv4.dns "${DNS1},${DNS2}"
 
-    systemctl restart NetworkManager
 fi
 
 if ! [ -z "${USERNAME}" ]
+then
     echo "Creating User ${USERNAME}" >>  /var/log/cloud-init-custom.log
 
     useradd -m ${USERNAME}
