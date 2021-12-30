@@ -5,7 +5,6 @@ data "template_file" "userdata_default" {
     HOSTNAME = var.guestHostname
     STATIC_IP = var.vmStaticIp
     IP_ADDR = var.vmIpAddress
-    NETWORK_INTERFACE = var.vmNetworkInterface
     NETMASK = var.vmNetmask
     GATEWAY = var.vmDefaultGW
     DNS1 = var.vmDNS1

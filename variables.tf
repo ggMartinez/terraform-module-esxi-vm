@@ -49,9 +49,7 @@ variable "userData" {
   default = "sopenco"
 }
 
-variable "vmNetworkInterface" { 
-   default = "ens192"
-}
+
 
 variable "vmStaticIp" { 
    default = "false"

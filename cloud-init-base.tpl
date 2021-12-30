@@ -12,16 +12,17 @@ then
     echo "GATEWAY: ${GATEWAY}" >> /var/log/cloud-init-custom.log
     echo "DNS1 & DNS2: ${DNS1} ${DNS2}" >> /var/log/cloud-init-custom.log
 
-    nmcli con mod ${NETWORK_INTERFACE} ipv4.method manual
-    nmcli con mod ${NETWORK_INTERFACE} ipv4.address ${IP_ADDR}/$(ipcalc -p 1.1.1.1 -m ${NETMASK}| grep PREFIX| cut -d"=" -f2)
-    nmcli con mod ${NETWORK_INTERFACE} ipv4.gateway ${GATEWAY}
-    nmcli con mod ${NETWORK_INTERFACE} ipv4.dns "${DNS1},${DNS2}"
+    INTERFACE="System $(nmcli d| grep connected| tr -s " " | cut -d" " -f1)"
+    nmcli con mod $INTERFACE ipv4.method manual
+    nmcli con mod $INTERFACE ipv4.address ${IP_ADDR}/$(ipcalc -p 1.1.1.1 -m ${NETMASK}| grep PREFIX| cut -d"=" -f2)
+    nmcli con mod $INTERFACE ipv4.gateway ${GATEWAY}
+    nmcli con mod $INTERFACE ipv4.dns "${DNS1},${DNS2}"
 
     systemctl restart NetworkManager
 fi
 
 if ! [ -z "${USERNAME}" ]
-    echo "Creating User ${USERNAME}" >> >> /var/log/cloud-init-custom.log
+    echo "Creating User ${USERNAME}" >>  /var/log/cloud-init-custom.log
 
     useradd -m ${USERNAME}
     PASS=$(openssl rand -base64 32)
@@ -31,7 +32,7 @@ if ! [ -z "${USERNAME}" ]
     if ! [ -z "${SSH_KEY}" ]
     then
         echo "ADDING KEY ${SSH_KEY}"
-        
+
         mkdir -p /home/${USERNAME}/.ssh
         echo ${SSH_KEY} > /home/${USERNAME}/.ssh/authorized_keys
         chown ${USERNAME} /home/${USERNAME}/.ssh/ -R
