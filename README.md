@@ -86,8 +86,11 @@ Don't know what happens on Ubuntu or some other crap that stupid people uses for
 ## Auth and user creation
 
 A few things about user creation and all that stuff.
+
 If you don't specify any value for the "vmUsername" variable, you must use the root password from the VM that you use as template (or a default user, depends on the VM that you create for template).
+
 If you specify a value for the "vmUsername" variable, and also specify a ssh pub key in "vmSSHKey" variable, then the user will be created with a random password, added to the sudoers, and the SSH key added for login, so you don't depend on password.
+
 If you specify a value for the "vmUsername" variable, and don't specify a ssh pub key, then a random password will be created and assigned to the user, and saved in a file in the home directory for the user, and also will be added to sudoers. Since you need to have other type of access to retrieve the file, pretty useless, but whatever, there may be someone who need to add an user without SSH Key. 
 
 
