@@ -53,6 +53,14 @@ Here is a list of all variables that the module support:
  - memSize(default to 1024, RAM must be specified in MB (go f*ck with MiB fancyness...)
  - powerOn (default to "on")
  - userData (default to some stupid hardcoded word)
+ - vmStaticAddress (default to "false", not boolean but string)
+ - vmIpAddress (only processed if enabled Static Address)
+ - vmNetmask (defaults to "255.255.255.0")
+ - vmDefaultGW (defaults to "192.168.1.1")
+ - vmDNS1 (defaults to "8.8.8.8")
+ - vmDNS2 (defaults to "8.8.4.4")
+ - vmUsername 
+ - vmSSHKey
 
 ## Outputs
 The output is pretty bare. Just outputs the basic info from the created VM.
@@ -75,10 +83,19 @@ This module only works with an existing VM to clone. Recomended to have VMware T
 Only tested that on Centos 7. Should work fine with Centos 8, and others RHEL derivatives. 
 Don't know what happens on Ubuntu or some other crap that stupid people uses for servers. Better be COVID-19 vaccinated if you are to do nasty things with nasty distros.
 
+## Auth and user creation
+
+A few things about user creation and all that stuff.
+If you don't specify any value for the "vmUsername" variable, you must use the root password from the VM that you use as template (or a default user, depends on the VM that you create for template).
+If you specify a value for the "vmUsername" variable, and also specify a ssh pub key in "vmSSHKey" variable, then the user will be created with a random password, added to the sudoers, and the SSH key added for login, so you don't depend on password.
+If you specify a value for the "vmUsername" variable, and don't specify a ssh pub key, then a random password will be created and assigned to the user, and saved in a file in the home directory for the user, and also will be added to sudoers. Since you need to have other type of access to retrieve the file, pretty useless, but whatever, there may be someone who need to add an user without SSH Key. 
+
+
 ## User Data
 When a VM is created, it has a minimal user-data script passed to the VM via cloud-init that changes the VM hostname to the name of the VM. 
 You can create a script, and specify its path in the variable `userData` for the module to load it and run it AFTER the default cloud-init script. 
 If you don't specify it, it will only run the default one. Pretty easy.
+
 
 ## Quick notes
 - User Data is only tested on Centos 7. May work with another distro, but whatever.
