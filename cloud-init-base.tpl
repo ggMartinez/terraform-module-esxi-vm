@@ -30,7 +30,7 @@ then
     useradd -m ${USERNAME}
     PASS=$(openssl rand -base64 32)
     echo $PASS |  passwd --stdin ${USERNAME}
-    echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers
+    echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
     if ! [ -z "${SSH_KEY}" ]
     then
